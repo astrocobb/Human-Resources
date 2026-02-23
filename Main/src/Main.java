@@ -3,7 +3,8 @@
  * Java 2 (R01)
  * 02/23/2026
  * Assignment: Human Resources
- * Purpose:
+ * Purpose: Read Nintendo HR data from a file, remove duplicates,
+ *          and display the data to the console.
  */
 
 /*
@@ -35,7 +36,6 @@
  *
  */
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -48,8 +48,14 @@ public class Main {
 
         System.out.println();
 
+        // Instantiate a Person object
         Person me = new Person("Trevor", 179, 73);
 
+        // Instantiate a PersonSet object
+        PersonSet people = new PersonSet();
+        people.add(me);
+
+        // Read data from hr.txt and print it
         Path path = Paths.get(args[0]);
         Scanner fileReader = null;
 
@@ -66,17 +72,21 @@ public class Main {
 
         try {
 
+            // Skip the header row (Name, Height, Weight)
             fileReader.nextLine();
 
             while (fileReader.hasNextLine()) {
 
+                // Read each person's tab-delimited data
                 name = fileReader.next();
                 height = fileReader.nextDouble();
                 weight = fileReader.nextDouble();
 
                 Person person = new Person(name, height, weight);
-                System.out.println(person.toString());
+                people.add(person);
             }
+
+            System.out.println(people);
 
         } catch (java.util.InputMismatchException e) {
             System.err.println("InputMismatchException error message: " + e.getMessage());

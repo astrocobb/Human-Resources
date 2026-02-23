@@ -1,5 +1,6 @@
 /**
- *
+ * Represents a person with a name, height, and weight.
+ * Used to store Nintendo HR data read from hr.txt.
  */
 public class Person {
 
@@ -9,14 +10,14 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Name: " + name + ", Height: " + height + ", Weight: " + weight;
+        return name + "\t" + height + "\t" + weight;
     }
 
     /**
-     *
-     * @param name
-     * @param height
-     * @param weight
+     * Constructs a Person with the given name, height, and weight.
+     * @param name   the person's name
+     * @param height the person's height in centimeters
+     * @param weight the person's weight in kilograms
      */
     public Person(String name, double height, double weight) {
         this.name = name;
@@ -25,6 +26,9 @@ public class Person {
     }
 
     // Getters
+    public String getName() {
+        return name;
+    }
     public double getHeight() {
         return height;
     }
@@ -33,6 +37,9 @@ public class Person {
     }
 
     // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
     public void setHeight(double height) {
         this.height = height;
     }
