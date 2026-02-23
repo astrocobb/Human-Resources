@@ -3,7 +3,17 @@
  */
 public interface PersonList {
 
-    abstract void add();
-    abstract void get();
+    /**
+     *
+     * @param p
+     */
+    public void add(Person p);
+
+    /**
+     *
+     * @param index
+     * @return
+     */
+    public Person get(int index);
 
 }

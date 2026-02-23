@@ -25,9 +25,6 @@ public class Person {
     }
 
     // Getters
-    public String getName() {
-        return name;
-    }
     public double getHeight() {
         return height;
     }
@@ -36,9 +33,6 @@ public class Person {
     }
 
     // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
     public void setHeight(double height) {
         this.height = height;
     }
