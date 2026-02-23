@@ -48,6 +48,8 @@ public class Main {
 
         System.out.println();
 
+        Person me = new Person("Trevor", 179, 73);
+
         Path path = Paths.get(args[0]);
         Scanner fileReader = null;
 
@@ -59,17 +61,30 @@ public class Main {
         }
 
         String name = "";
-        int height = 0;
-        int weight = 0;
+        double height = 0;
+        double weight = 0;
 
         try {
+
             fileReader.nextLine();
+
             while (fileReader.hasNextLine()) {
+
                 name = fileReader.next();
-                height = fileReader.nextInt();
-                weight = fileReader.nextInt();
+                height = fileReader.nextDouble();
+                weight = fileReader.nextDouble();
+
+                Person person = new Person(name, height, weight);
+                System.out.println(person.toString());
             }
-        } catch (java.util.InputMismatchException e) {}
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("InputMismatchException error message: " + e.getMessage());
+            e.printStackTrace();
+            System.out.println("\n"+e+"\n");
+        }
+
+        fileReader.close();
 
         try {
             FileWriter fileWriterOrder = new FileWriter("outputfile.txt");
