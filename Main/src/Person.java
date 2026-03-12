@@ -2,7 +2,7 @@
  * Represents a person with a name, height, and weight.
  * Used to store Nintendo HR data read from hr.txt.
  */
-public class Person {
+public class Person implements Comparable<Person>{
 
     private String name;
     private double height;
@@ -61,5 +61,10 @@ public class Person {
         return this.name.equals(p.name)
             && this.height == p.height
             && this.weight == p.weight;
+    }
+
+    @Override
+    public int compareTo(Person p) {
+        return 0;
     }
 }
