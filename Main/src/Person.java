@@ -2,7 +2,7 @@
  * Represents a person with a name, height, and weight.
  * Used to store Nintendo HR data read from hr.txt.
  */
-public class Person implements Comparable<Person>{
+public class Person implements Comparable<Person> {
 
     private String name;
     private double height;
@@ -10,7 +10,7 @@ public class Person implements Comparable<Person>{
 
     @Override
     public String toString() {
-        return name + "\t" + height + "\t" + weight;
+        return String.format("%-10s%-15.2f%-15.2f", name, height, weight);
     }
 
     /**
@@ -23,6 +23,15 @@ public class Person implements Comparable<Person>{
         this.name = name;
         this.height = height;
         this.weight = weight;
+    }
+
+    /**
+     * Copy constructor. Creates a new Person with the same data
+     * as the given Person, so callers can avoid sharing references.
+     * @param other the Person whose data should be copied
+     */
+    public Person(Person other) {
+        this(other.name, other.height, other.weight);
     }
 
     // Getters
@@ -65,6 +74,6 @@ public class Person implements Comparable<Person>{
 
     @Override
     public int compareTo(Person p) {
-        return 0;
+        return this.name.compareTo(p.name);
     }
 }

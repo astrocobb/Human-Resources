@@ -31,12 +31,23 @@ public class PersonSet implements PersonList {
     }
 
     /**
-     * Returns a string representation of all Persons in the set.
-     * @return concatenated toString output of each Person
+     * Returns the column header for this set's data. Subclasses with
+     * different units override this to label the columns appropriately.
+     * @return a tab/column-formatted header line (no trailing newline)
+     */
+    protected String getHeader() {
+        return String.format("%-10s%-15s%-15s", "Name", "Height (cm)", "Weight (kg)");
+    }
+
+    /**
+     * Returns a string representation of all Persons in the set,
+     * preceded by a labeled column header.
+     * @return header followed by each Person's data, one per line
      */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append(getHeader()).append("\n");
         for (Person p : people) {
             sb.append(p).append("\n");
         }
